@@ -1,0 +1,2 @@
+export const GET_URL_DETAIL = 'GET_URL_DETAIL';
+export const GET_URL_DETAIL_FAILED = 'GET_URL_DETAIL_FAILED';
