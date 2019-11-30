@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Input, Spin } from 'antd';
 import { getUrlData } from '../action-creator/GetData';
-// import _ from 'lodash';
+import _ from 'lodash';
 
 import 'antd/dist/antd.css';
 import './InputComponent.scss';
@@ -22,20 +22,22 @@ class InputComponent extends Component {
   getUrlDetail(value) {
     this.props.GetData(value)
     .then(() => {
-      const { allData } = this.props;
-      console.log('aaaaa', allData);
-      if (allData) {
-        console.log('masuk', allData);
-        this.setState({ loading: false });
+      const { datas } = this.props;
+      if(!_.isEmpty(datas)) {
+        const { history } = this.props;
+        history.push('/detail');
       } else {
-        console.log('nggaa', allData);
-        this.setState({ loading: true });
+        alert('Error while getting the data');
       }
     });
   }
 
+  gotoHistory() {
+    const { history } = this.props;
+    history.push('/history');
+  }
+
   render() {
-    console.log('this prps', this.props);
     return (
       <div className="input-wrapper">
         <div className="input-wrapper__title">Put Your URL Below Here</div>
@@ -47,15 +49,15 @@ class InputComponent extends Component {
             onSearch={this.getUrlDetail.bind(this)}
           />
         </Spin>
+        <div className="input-wrapper__history" onClick={this.gotoHistory.bind(this)}>History</div>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log('state', state);
   return {
-      datas: state.rootReducer
+      datas: state.getData
   }
 }
 

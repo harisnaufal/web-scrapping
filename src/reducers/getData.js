@@ -1,19 +1,23 @@
 import * as Actions from '../action/Actions.js';
-import Immutable from 'immutable';
 
-const initialState = Immutable.fromJS({
-  allData: {}
+const initialData = ({
+  allData: {},
+  historyData: []
 });
 
-function rootReducer(state = initialState, action = null) {
-  console.log('action', action);
+const rootReducer = (state = initialData, action) => {
+  let history = [];
+  if (action.historyData !== undefined) {
+    history.push(action.historyData);
+  }
   switch (action.type) {
     case Actions.GET_URL_DETAIL:
-      return state.merge({
-        allData: action.allData
-      });
+      return {
+        allData: action.allData,
+        historyData: history
+      }
     default:
-      return state;
+      return state
   }
 }
 

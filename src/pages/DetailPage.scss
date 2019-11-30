@@ -1,0 +1,40 @@
+.detail-wrapper {
+  margin: 0 auto;
+  width: 50%;
+  border: 1px solid lightgray;
+  border-radius: 6px;
+  padding: 3rem;
+  margin-top: 1.5rem;
+  &__content {
+    display: grid;
+    &-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: black;
+      margin: 1rem 0;
+    }
+    &-desc {
+      line-height: 1.8;
+      margin: 0.5rem 0;
+    }
+    &-oldprice {
+      text-decoration: line-through;
+      font-size: 0.8rem;
+      color: black;
+    }
+    &-newprice {
+      color: red;
+      font-size: 1rem;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+  }
+}
+
+.back-button {
+  margin: 3rem 0 0 22.5rem;
+  cursor: pointer;
+  color: lightskyblue;
+  font-weight: bold;
+  font-size: 1rem;
+}

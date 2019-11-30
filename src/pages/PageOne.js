@@ -15,7 +15,7 @@ class PageOne extends Component {
     return (
       <div className="pageone-wrapper">
         <span className="pageone-wrapper__title">Fabelio Test</span>
-        <InputComponent />
+        <InputComponent {...this.props} />
       </div>
     );
   }
